@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>zy的传感器仪表盘</title>
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <script src="https://cdn.staticfile.org/echarts/5.3.0/echarts.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.js"></script>
+  </head>
+  <body>
+    <div class="slider-container">
+      <div class="left-slide">
+        <div style="background-color: #FD3555">
+          <h1>OverALL</h1>
+          <p>数据总览</p>
+        </div>
+        <div style="background-color: #2A86BA">
+          <h1>Position</h1>
+          <p>传感器位置分布</p>
+        </div>
+        <div style="background-color: #252E33">
+          <h1>Data</h1>
+          <p>各项数据</p>
+        </div>
+        <div style="background-color: #FFB866">
+          <h1>Welcome</h1>
+          <p>ZY的仪表盘</p>
+        </div>
+      </div>
+      <div class="right-slide">
+        <div id="welcome"></div>
+        <div id="data"></div>
+        <div id="position"></div>
+        <div id="main"></div>
+      </div>
+      <div class="action-buttons">
+        <button class="down-button">
+          <i class="fas fa-arrow-down"></i>
+        </button>
+        <button class="up-button">
+          <i class="fas fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+    <script src="GetData.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
