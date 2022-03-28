@@ -22,9 +22,6 @@ public class ServerService {
     public Object GetData(String name,
                           Date begin,
                           Date end) {
-        if (begin == null || end == null){
-            return meteorologyHashMap.values().stream().collect(Collectors.toList());
-        }
         if(name.equals("meteorology")){
            return GetMeteorology(begin,end);
         }
@@ -38,11 +35,14 @@ public class ServerService {
             StoreMeteorology((Meteorology) Data, time);
         }
     }
-    public Object GetMeteorology(Date Begin,Date end){
+    public Object GetMeteorology(Date begin,Date end){
         if(meteorologyHashMap==null) {
             return null;
         }
-       return meteorologyHashMap.subMap(Begin,true,end,true).values().stream().collect(Collectors.toList());
+        if (begin == null || end == null){
+            return meteorologyHashMap.values().stream().collect(Collectors.toList());
+        }
+       return meteorologyHashMap.subMap(begin,true,end,true).values().stream().collect(Collectors.toList());
     }
     public Object StoreMeteorology(Meteorology meteorology, Date Time) {
         if(meteorologyHashMap==null)
@@ -75,6 +75,8 @@ public class ServerService {
     @Scheduled(fixedRate = 10000)
     public void scheduledTask() {
         try {
+            if(meteorologyHashMap==null)
+                return;
             FileOutputStream out = null;
             File file = new File("./meteorology.ser");
             if (!file.exists()) {
